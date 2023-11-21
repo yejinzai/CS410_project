@@ -14,6 +14,11 @@ How To Use StudyFriend Chrome browser extension
 5. View the popup and enter a search term.
 
 ------
+dummy.txt has text data
+    - Payel can use to verify if scaper output matches with search input
+    - Sharon and Christine can use to development front-end tasks in parallel
+
+------
 
 Notes about search to test on terminal and the api
 1. pip install requirements.txt
