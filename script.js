@@ -3,8 +3,10 @@ function performSearch() {
 var searchTerm = document.getElementById("searchInput").value;
 
 // Make a GET request to the server
-fetch(`http://localhost:5000/api/search?searchTerm=${searchTerm}`, {
-   method: 'GET', 
+fetch(`http://localhost:5000/test/search?searchTerm=${searchTerm}`, {
+//fetch(`http://localhost:5000/test/search?searchTerm=tree`, {
+
+method: 'GET', 
   
 })
         .then(response => {

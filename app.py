@@ -8,8 +8,9 @@ app = Flask(__name__)
 CORS(app)
 #CORS(app, resources={r"*": {"origins": "*"}}, supports_credentials=True)  # Allow all origins during development
 
+#@app.route('/test/search', methods=['GET'])
 
-@app.route('/api/search', methods=['GET'])
+@app.route('/test/search', methods=['GET'])
 def handle_request():
 
     data = request.get_json()
