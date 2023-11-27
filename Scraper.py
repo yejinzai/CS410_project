@@ -4,8 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 import urllib.parse as urlp
 
-#Only to spit it out as a dataframe
-import pandas as pd
 
 from typing import Any, List
 
@@ -61,7 +59,7 @@ class WebScrapeTedTalk:
         return [i for i in stg_name_list if i!= '']
     
     
-    def _output_as_records(self) -> Any:
+    def output_as_records(self) -> Any:
         """
         Returns a record object of (title, url and desccription).
         """
@@ -78,17 +76,4 @@ class WebScrapeTedTalk:
                 }
              )
         
-        return rec  
-        
-     
-
-def WebScrape(search_phrase):
-    o= WebScrapeTedTalk(search_phrase)
-    return o._output_as_records()
-
-        
-def main():
-    WebScrape(sys.argv[1])
-
-if __name__ == '__main__':
-    main()
+        return rec
