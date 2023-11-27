@@ -1,11 +1,11 @@
-console.log("hello world")
 function performSearch() {
 // Get the search term from the input field
 var searchTerm = document.getElementById("searchInput").value;
 
 // Make a GET request to the server
 fetch(`http://localhost:5000/api/search?searchTerm=${searchTerm}`, {
-   method: 'GET',    
+   method: 'GET', 
+  
 })
         .then(response => {
             // Since mode is 'no-cors', the response will be opaque
@@ -17,4 +17,4 @@ fetch(`http://localhost:5000/api/search?searchTerm=${searchTerm}`, {
         .catch(error => {
             console.error('Fetch error:', error);
         });
-    }
+}

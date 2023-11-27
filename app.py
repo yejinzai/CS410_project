@@ -5,18 +5,18 @@ from scrape import do_scrape
 import json
 
 app = Flask(__name__)
-#CORS(app)
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)  # Allow all origins during development
+CORS(app)
+#CORS(app, resources={r"*": {"origins": "*"}}, supports_credentials=True)  # Allow all origins during development
 
 
-@app.route('/api/search', methods=['POST'])
+@app.route('/api/search', methods=['GET'])
 def handle_request():
 
     data = request.get_json()
 
     query = data.get('query')
     k = data.get('k', 5)  # Default to 5 if 'k' is not provided
-
+    return query
     scrape_output = do_scrape(query, False)
     search_output = get_knn(query, scrape_output, k)
 
