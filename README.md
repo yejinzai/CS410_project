@@ -11,16 +11,16 @@ for issues with pip install invovling long paths: https://learn.microsoft.com/en
     enable Developer Mode using the toggle switch
     click on "Load Unpacked" and select the directory where you downloaded this Github repo
 
-3. Open a new tab or window in the Chrome web browser
+3. Open a terminal in the Github folder and run:
+    python app.py
 
 4. Open index.html in the Chrome browser
 
-5. Open a terminal in the Github folder and run:
-    python app.py
+5. enter a search term
 
 
 
-    
+
 ------
 dummy.txt has text data
     - Payel can use to verify if scaper output matches with search input
