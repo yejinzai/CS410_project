@@ -5,7 +5,7 @@
     "description": "Find relevant pages to study from Coursera and Campuswire",
     "permissions": ["activeTab"],
     "action": {
-      "default_popup": "popup.html",
+      "default_popup": "index.html",
       "default_icon": {
       }
     }
