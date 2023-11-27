@@ -17,7 +17,7 @@ def handle_request():
 
     query = data.get('query')
     k = data.get('k', 5)  # Default to 5 if 'k' is not provided
-    return query
+    #return query
     scrape_output = do_scrape(query, False)
     search_output = get_knn(query, scrape_output, k)
 
