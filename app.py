@@ -20,7 +20,6 @@ def handle_request():
 
     json_response = json.dumps(search_output)
     print(json_response)
-    return jsonify({"result": f"Search query: {query}, k: {k}"})
     return jsonify(json_response)
 
 if __name__ == '__main__':
