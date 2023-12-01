@@ -6,11 +6,8 @@ import json
 
 app = Flask(__name__)
 CORS(app)
-#CORS(app, resources={r"*": {"origins": "*"}}, supports_credentials=True)  # Allow all origins during development
 
-#@app.route('/test/search', methods=['GET'])
-
-@app.route('/test/search', methods=['GET'])
+@app.route('/test/search', methods=['POST'])
 def handle_request():
 
     data = request.get_json()
@@ -23,6 +20,7 @@ def handle_request():
 
     json_response = json.dumps(search_output)
     print(json_response)
+    return jsonify({"result": f"Search query: {query}, k: {k}"})
     return jsonify(json_response)
 
 if __name__ == '__main__':
