@@ -17,13 +17,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-console.log(firebase);
 
 
 // Test Authenticaiton  
 let test_email = "cs410testaccount@gmail.com";
 let test_password = "cs410testaccountpassword";
-console.log(test_email, test_password);
 
 firebase.auth().signInWithEmailAndPassword(test_email, test_password)
     .then(function (result) {
@@ -39,27 +37,37 @@ const firestore = firebase.firestore();
 let userID = 'localtest';
 let docRef = await firestore.collection('users').doc(userID).collection('bookmarks');
 
-console.log(docRef);
-
-
-
-
+//dummy article
+let dummy3 = {
+    Title: "Steve Carell Just Got Everyone\u2019s Hopes Up About \"The Office\" Returning To NBC",
+    Url: "http://archive.is/cwsfC",
+    Description: "It's not. (he later said it was a typo, and that he meant \"Will and Grace\" [Buzzfeed]"
+}
 //function - get bookmarks
 function getBookmarksFromFirestore() {
     return new Promise((resolve, reject) => {
         docRef.get().then((results) => {
             let bookmarks = [];
             results.forEach((doc) => {
-                console.log('here');
                 bookmarks.push({
-                    title: doc.data().Title,
-                    description: doc.data().Description,
-                    url: doc.data().Url
+                    Title: doc.data().Title,
+                    Url: doc.data().Url,
+                    Description: doc.data().Description
                 });
             });
-            console.log('results:', results);
-            console.log('bookmarks: ', bookmarks);
             resolve(bookmarks);
+        });
+    });
+}
+
+//function - add bookmark
+function addBookmarkToFirestore(article){
+    return new Promise ((resolve, reject) => {
+        docRef.add(article).then(()=>{
+            resolve(true);
+            console.log('successfuly add to firestore');
+        }).catch((error)=>{
+            console.log('error message: ', error.message);
         });
     });
 }
