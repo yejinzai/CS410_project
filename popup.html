@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!-- Write by Kathleen -->
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>StudyFriend</title>
@@ -10,4 +11,103 @@
         <input type="submit" value="Search" />
     </form>
 </body>
-</html>
+</html> -->
+
+
+<!-- Write by Christine -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <title> Search a Topic From Ted Talk </title>
+        
+        <!-- Pyscript -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />-->
+        
+        <!-- bootstrap for styling , Pyscript can also be used for styling instead of bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />  
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link href="tedlog.jpg" rel="icon" />
+        <style>
+        
+            body {
+                background-color: #fcfcfc;
+                padding-top: 55px;
+                min-height: 100vh;
+                margin:0;
+                display:flex;
+                flex-direction:column;
+            }
+
+            footer {
+                text-align: center;
+                font-size: 1.5rem;
+                color:#aaa;
+        }
+           
+        </style>  
+        
+    </head>
+    <body>
+
+    <py-script>
+        <!-- ..write your Python code in py-script tag -->
+     
+    </py-script>    
+
+        <div class="container">
+        <form action="https://www.google.com/search" method="GET">
+
+            
+            <h1 class="text-center">Search Engine 
+                <i class="glyphicon glyphicon-envelope"></i>
+            </h1>
+            </br>
+            <p><h3>Search a topic that you are interested from TedTalk.</h3> </p>
+            <script src="script.js"></script>
+
+            <input id="topic" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter a topic here" /></p>
+       
+            <center>
+            <button id="submit" type="submit"  class="btn btn-info" pys-onClick="search" >Search
+            </button>
+            </center>
+        </form>
+
+            
+            <h4>Result:</h4>
+            <textarea id="summary1" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea>
+
+            <textarea id="summar2" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea>
+
+            <textarea id="summary3" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea>
+
+            <textarea id="summar4" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea>
+
+            <textarea id="summary5" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Result"></textarea>
+
+
+            <!-- Add Bookmark Here -->
+            <label class="add-fav" style="float:right">
+            <input type="checkbox" />
+            <i class="icon-star">
+            <i class="icon-plus-sign"></i>
+            </i>
+            </label>
+        </div>  
+
+        <footer>
+            <p> &copy; Copyright 2023 by Women in STEM Team Inc. All rights reserved.</p>
+
+        </footer> 
+        
+    </body>
+</html>    
+
+
