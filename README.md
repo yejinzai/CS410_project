@@ -18,6 +18,11 @@ for issues with pip install invovling long paths: https://learn.microsoft.com/en
 
 5. enter a search term
 
+-----
+Bookmarks Section
+
+1. npm install firebase
+2. to test out the bookmark feature, open terminal and run: live-server . 
 
 
 
