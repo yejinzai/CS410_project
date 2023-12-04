@@ -28,6 +28,7 @@ firebase.auth().signInWithEmailAndPassword(test_email, test_password)
     }).catch(function (error) {
         console.log(error.code + ":" + error.message);
     });
+    
 console.log('firebases init success');
 
 
@@ -35,41 +36,26 @@ console.log('firebases init success');
 const firestore = firebase.firestore();
 let userID = 'localtest';
 let docRef = await firestore.collection('users').doc(userID).collection('bookmarks');
-console.log("docRef", docRef);
 
-//dummy article for testing functions
-let dummy3 = {
-    Title: "Steve Carell Just Got Everyone\u2019s Hopes Up About \"The Office\" Returning To NBC",
-    Url: "http://archive.is/cwsfC",
-    Description: "It's not. (he later said it was a typo, and that he meant \"Will and Grace\" [Buzzfeed]"
-}
+////////
+let bookmarkSection = document.querySelector('#bookmarks');
 
-//port setup
-/*
-chrome.runtime.onConnect.addListener((port) => {
-    port.onMessage.addListener((msg) => {
-        if(msg.method == "getBookmarksFromFirestore") {
-            getBookmarksFromFirestore().then((bookmarks)=>{
-                console.log(bookmarks);
-                port.postMessage({boookmarks: bookmarks});
+
+//get bookmarks
+function getBookmarksFromFirestore() {
+    return new Promise((resolve, reject) => {
+        docRef.get().then((results) => {
+            let bookmarks = [];
+            results.forEach((doc) => {
+                bookmarks.push({
+                    Title: doc.data().Title,
+                    Url: doc.data().Url,
+                    Description: doc.data().Description
+                });
             });
-        }
-    });
-});*/
-
-
-
-
-//function - add bookmark
-function addBookmarkToFirestore(article){
-    return new Promise ((resolve, reject) => {
-        docRef.add(article).then(()=>{
-            resolve(true);
-            console.log('successfuly add to firestore');
-        }).catch((error)=>{
-            console.log('error message: ', error.message);
+            console.log("bookmarks:", bookmarks);
+            resolve(bookmarks);
         });
     });
 }
-
-
+getBookmarksFromFirestore();

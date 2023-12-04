@@ -1,4 +1,4 @@
-{ "type": "module",
+{ "type":"module",
   "dependencies": {
     "firebase": "^10.7.0"
   }
