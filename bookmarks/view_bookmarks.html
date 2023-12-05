@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title> Search a Topic From Ted Talk </title>
+
+    <!-- Pyscript -->
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />-->
+
+    <!-- bootstrap for styling , Pyscript can also be used for styling instead of bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Firebase App and SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+    <!-- view bookmarks + firebase set up script-->
+    <script type="module" src="view_bookmarks.js"></script>
+
+
+    <style>
+                
+        .bookmark-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            padding-top: 55px;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #aaa;
+        }
+
+        #bookmarks {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .bookmark-div{
+            border: 1px solid grey;
+            margin: 20px;
+            padding: 15px;
+        }
+
+        .bookmark-title-div, .bookmark-url-div, .bookmark-description-div{
+            margin-bottom: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="text-center">Search Engine
+            <i class="glyphicon glyphicon-envelope"></i>
+        </h1>
+        </br>
+
+        <h4>Bookmarks:</h4>
+        <div id="bookmarks">
+            <div id="loader">Loading...</div>
+
+        </div>
+
+        <!-- Back to Main Page -->
+        <a href="../index.html">
+            <button>Back to Main Page</button>
+        </a>
+    </div>
+
+    <footer>
+        <p> &copy; Copyright 2023 by Women in STEM Team Inc. All rights reserved.</p>
+
+    </footer>
+
+</body>
+
+</html>
