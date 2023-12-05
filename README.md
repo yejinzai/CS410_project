@@ -12,6 +12,9 @@ for issues with pip install invovling long paths: https://learn.microsoft.com/en
     click on "Load Unpacked" and select the directory where you downloaded this Github repo
 
 3. Open a terminal in the Github folder and run:
+    flask run 
+
+    or you may be able to use:
     python app.py
 
 4. Open index.html in the Chrome browser
@@ -43,4 +46,5 @@ Notes about search to test on terminal and the api
    - in another terminal, curl -X POST -H "Content-Type: application/json" -d '{"query": "search query", "k": k}' http://localhost:5000/api/search
    - e.g. curl -X POST -H "Content-Type: application/json" -d '{"query": "climate change", "k": 5}' http://localhost:5000/api/search
    - 
+
 

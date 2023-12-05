@@ -6,3 +6,5 @@ flask
 beautifulsoup4
 flask_cors
 bs4
+requests
+urllib3
