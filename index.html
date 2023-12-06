@@ -46,6 +46,28 @@
                 margin-bottom: 10px;
 
             }
+
+            .bookmark-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+
+
+        #bookmarks {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .bookmark-div{
+            border: 1px solid grey;
+            margin: 20px;
+            padding: 15px;
+        }
+
+        .bookmark-title-div, .bookmark-url-div, .bookmark-description-div{
+            margin-bottom: 5px;
+        }
            
         </style>  
         
@@ -65,24 +87,11 @@
         <button onclick="performSearch()">Search</button>
 
 
-
+            <div id="results">
         <h4>Result:</h4>
-        <textarea id="result1" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            placeholder="Result"></textarea>
-            <button class="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
 
-        <textarea id="result2" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            placeholder="Result"></textarea>
-            <button class="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
-        <textarea id="result3" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            placeholder="Result"></textarea>
-            <button class="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
-        <textarea id="result4" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            placeholder="Result"></textarea>
-            <button class="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
-        <textarea id="result5" class="form-control" rows="2" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            placeholder="Result"></textarea>
-            <button class="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
+
+            </div>
         <!-- View Bookmarks -->
         <div>
             <a href="bookmarks/view_bookmarks.html">
