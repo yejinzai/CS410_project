@@ -1,5 +1,3 @@
-let articleList;
-
 function performSearch() {
     // Get the search term from the input field
     var searchTerm = document.getElementById("searchInput").value;
@@ -49,7 +47,7 @@ function performSearch() {
         .then(response => response.json())
         .then(data => {
             const parsedData = JSON.parse(data);
-            articleList = parsedData;
+
             //Christine's debug
             //createBookmarkElements(dummy).then((response)=>{
 
@@ -74,7 +72,6 @@ function createBookmarkElements(bookmarks){
         var resultsContainer = document.getElementById('results');
         resultsContainer.appendChild(bookmarkElement);
     });
-    addBookmarkButtonEventListener();
     return new Promise((resolve, reject) => {
         resolve(true);
     });
@@ -109,12 +106,7 @@ function createBookmarkElement(bookmark){
     description.innerHTML = bookmark.Description;
 
     //TODO: add bookmark
-    let bookMarkButton = document.createElement('button');
-    bookMarkButton.classList.add('add-bookmark-button');
-    //bookMarkButton.classList.();
-    
-    bookMarkButton.innerHTML = "Add Bookmark";
-    // id="add-bookmark-2"
+    // <button className="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
 
     //append
     bookmarkTitleDiv.appendChild(title);
@@ -124,7 +116,6 @@ function createBookmarkElement(bookmark){
     bookmarkDiv.appendChild(bookmarkTitleDiv);
     bookmarkDiv.appendChild(bookmarkUrlDiv);
     bookmarkDiv.appendChild(boookmarkDescriptionDiv);
-    bookmarkDiv.appendChild(bookMarkButton);
 
     return bookmarkDiv;
 

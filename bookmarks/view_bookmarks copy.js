@@ -35,25 +35,13 @@ console.log('firebases init success');
 //db access
 const firestore = firebase.firestore();
 let userID = 'localtest';
-let docRef = getDocRef();
-let bookmarks = getBookmarksFromFirestore();
+let docRef = await firestore.collection('users').doc(userID).collection('bookmarks');
 
-async function getDocRef(){
-    let collection = await firestore.collection('users').doc(userID).collection('bookmarks');
-    console.log('collection: ', collection);
-    return collection;
-}
-
-console.log(type(docRef));
-
-
-async function getBookmarksFromFirestore(){
-    let bookmarks = await getBookmarksFromFirestoreHelper();
-    return bookmarks;
-} 
+////////
+let bookmarkSection = document.querySelector('#bookmarks');
 
 //get bookmarks
-function getBookmarksFromFirestoreHelper() {
+function getBookmarksFromFirestore() {
     return new Promise((resolve, reject) => {
         docRef.get().then((results) => {
             let bookmarks = [];
@@ -68,10 +56,8 @@ function getBookmarksFromFirestoreHelper() {
         });
     });
 }
-/*
-////////
-let bookmarkSection = document.querySelector('#bookmarks');
 
+let bookmarks = await getBookmarksFromFirestore();
 
 function createBookmarkElements(bookmarks){
     bookmarks.forEach((bookmark)=>{
@@ -130,4 +116,4 @@ createBookmarkElements(bookmarks).then((response)=>{
         document.querySelector("#loader").classList.toggle('hidden');
     }
 });
-*/
+

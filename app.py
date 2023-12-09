@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+#from flask_cors import CORS
+from flask_cors import CORS, cross_origin
+
 from search import get_knn
 from scrape import do_scrape
 import json
 
 app = Flask(__name__)
 # Enable CORS for all routes with explicit origin
+
 CORS(app, resources={r"/test/*": {"origins": "*", "methods": ["POST", "OPTIONS"], "headers": ["Content-Type", "Authorization"]}})
+@cross_origin(origin='*')
 
 @app.route('/test/search', methods=['POST'])
 def handle_request():

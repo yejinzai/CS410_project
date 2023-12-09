@@ -34,18 +34,8 @@ console.log('firebases init success');
 //db access
 const firestore = firebase.firestore();
 let userID = 'localtest';
+let docRef = await firestore.collection('users').doc(userID).collection('bookmarks');
 
-let docRef = getDocRef();
-
-async function getDocRef(){
-    let collection = await firestore.collection('users').doc(userID).collection('bookmarks');
-    console.log('collection: ', collection);
-    return collection;
-}
-
-console.log(docRef);
-
-/*
 //function - add bookmark
 function addBookmarkToFirestore(article) {
     return new Promise((resolve, reject) => {
@@ -86,28 +76,20 @@ let dummyList = [
         Description: "dummy5 description"
     }
 ]
-*/
+
 let addBookmarkButtons = document.querySelectorAll('.add-bookmark-button');
-
-
+let articleList = dummyList; // TODO - change the value to the actual list
 
 //button event listeners
-function addBookmarkButtonEventListener(){
-    console.log("here :D ");
-    addBookmarkButtons.forEach((addBookmarkButton)=>{
-        addBookmarkButton.addEventListener("click", ()=>{
-            let buttonId = addBookmarkButton.id;
-            let articleIndex = buttonId.charAt(buttonId.length-1)-1;
-            let bookmark = articleList[articleIndex];
-            console.log('buttonId', buttonId);
-            console.log('articleIndex', articleIndex);
-            console.log('bookmark', bookmark);
-    /*
-            addBookmarkToFirestore(bookmark).then(()=>{ 
-                let successMessage = document.createElement('p');
-                successMessage.innerHTML = "Added to Bookmarks";
-                addBookmarkButton.after(successMessage);
-            });*/
+addBookmarkButtons.forEach((addBookmarkButton)=>{
+    addBookmarkButton.addEventListener("click", ()=>{
+        let buttonId = addBookmarkButton.id;
+        let articleIndex = buttonId.charAt(buttonId.length-1)-1;
+        let bookmark = articleList[articleIndex];
+        addBookmarkToFirestore(bookmark).then(()=>{ 
+            let successMessage = document.createElement('p');
+            successMessage.innerHTML = "Added to Bookmarks";
+            addBookmarkButton.after(successMessage);
         });
     });
-}
+});

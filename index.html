@@ -4,6 +4,8 @@
         
         <title> Search a Topic From Ted Talk </title>
         
+        <script src="script.js"></script>
+
         <!-- Pyscript -->
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
         <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />-->
@@ -21,7 +23,7 @@
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-        <script type="module" src="bookmarks/save_bookmark.js"></script>
+        <script src="bookmarks/save_bookmark.js"></script>
         
         <style>
         
@@ -81,7 +83,6 @@
             <i class="glyphicon glyphicon-envelope"></i>
         </h1>
         </br>
-        <script src="script.js"></script>
 
         <input type="text" id="searchInput" placeholder="Type your search term...">
         <button onclick="performSearch()">Search</button>
@@ -98,14 +99,14 @@
                 <button>View Bookmarks</button>
             </a>
         </div>
-
+    
         <!-- Add Bookmark Here -->
-        <label class="add-fav" style="float:right">
+        <!-- <label class="add-fav" style="float:right">
             <input type="checkbox" />
             <i class="icon-star">
                 <i class="icon-plus-sign"></i>
             </i>
-        </label>
+        </label> -->
     </div>
 
     <footer>
