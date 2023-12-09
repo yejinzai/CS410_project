@@ -7,13 +7,15 @@ How To Use StudyFriend Chrome browser extension
     Open a terminal window in the project folder and execute:
         pip install -r requirements.txt
         Npm install firebase
+        npm install -g live-server
 
 2. Run servers:
     open two terminal windows in the project folder and execute one of these commands in each one:
         flask run
+           note: if flask run is not successful, you may also use
+            python app.py
         live-server . 
-        note: if flask run is not successful, you may also use
-         python app.py
+             note: if this command causes an error about scripts being disabled, run a terminal as administrator and then execute: Set-ExecutionPolicy Unrestricted
 
 3. Install the extension in your Google Chrome:
     In a Chrome browser, go to chrome://extensions/
