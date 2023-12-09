@@ -27,8 +27,7 @@ How To Use StudyFriend Chrome browser extension
 Bookmarks Section
 
 1. npm install firebase
-2. to test out the bookmark feature, open terminal and run: live-server . 
-3. npm install -g live-server' for live-server
+2. Optional: to test out the bookmark feature, do npm install -g live-server' for live-server. and open terminal and run: live-server . 
 ---------
 
 

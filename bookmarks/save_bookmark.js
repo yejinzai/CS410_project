@@ -35,19 +35,6 @@ console.log('firebases init success');
 const firestore = firebase.firestore();
 let userID = 'localtest';
 
-/*let docRef = firestore.collection('users').doc(userID).collection('bookmarks');
-
-async function getDocRef(){
-    //let collection = await firestore.collection('users').doc(userID).collection('bookmarks');
-    let collection = await docRef.add({
-        name: 'Tokyo',
-        country: 'Japan'
-    });
-    console.log('collection: ', collection);
-    return collection;
-}*/
-
-
 
 //function - add bookmark
 
