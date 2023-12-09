@@ -1,27 +1,35 @@
-How To Use StudyFriend Chrome browser extension
+# StudyFriend Chrome Browser Extension
 
-1.  Download and setup steps
-    Install Google Chrome browser 
-    git clone https://github.com/yejinzai/CS410_project 
-    Install Python
-    Open a terminal window in the project folder and execute:
-        pip install -r requirements.txt
-        Npm install firebase
+## How To Use
 
-2. Run servers:
-    open two terminal windows in the project folder and execute one of these commands in each one:
-        flask run
-           note: if flask run is not successful, you may also use
-            python app.py
-  
-3. (Optional) Install the extension in your Google Chrome to view as a popup:
-    In a Chrome browser, go to chrome://extensions/
-    enable Developer Mode using the toggle switch
-    click on "Load Unpacked" and select the directory where you downloaded this Github repo
-    Then you can access the extension from the extension bar on Chrome
+### 1. Download and Setup Steps
 
-4. Use the web interface 
-    From the project folder, open index.html in the Chrome browser
-    enter a search term
+- Install Google Chrome browser
+- Clone the repository:
+    git clone https://github.com/yejinzai/CS410_project
 
+- Install Python
+- Open a terminal window in the project folder and execute:
+    pip install -r requirements.txt
+    npm install firebase
+
+
+### 2. Run Servers
+
+Open a terminal window in the project folder and execute:
+
+- flask run
+
+
+### 3. (Optional) Install the Extension in Google Chrome
+
+- In a Chrome browser, go to `chrome://extensions/`
+- Enable Developer Mode using the toggle switch
+- Click on "Load Unpacked" and select the directory where you downloaded this GitHub repository
+- Access the extension from the extension bar in Chrome
+
+### 4. Use the Web Interface
+
+- From the project folder, open `index.html` in the Chrome browser
+- Enter a search term
 
