@@ -1,4 +1,6 @@
 let articleList;
+let addBookmarkButtons;
+
 
 function performSearch() {
     // Get the search term from the input field
@@ -69,10 +71,12 @@ function performSearch() {
 }
 
 function createBookmarkElements(bookmarks){
+    let counter = 0;
     bookmarks.forEach((bookmark)=>{
-        let bookmarkElement = createBookmarkElement(bookmark);
+        let bookmarkElement = createBookmarkElement(bookmark, counter);
         var resultsContainer = document.getElementById('results');
         resultsContainer.appendChild(bookmarkElement);
+        counter++;
     });
     addBookmarkButtonEventListener();
     return new Promise((resolve, reject) => {
@@ -80,7 +84,7 @@ function createBookmarkElements(bookmarks){
     });
 }
 
-function createBookmarkElement(bookmark){
+function createBookmarkElement(bookmark, counter){
     //div
     let bookmarkDiv = document.createElement('div');
     bookmarkDiv.classList.add('bookmark-div');
@@ -108,12 +112,12 @@ function createBookmarkElement(bookmark){
     description.classList.add('bookmark-url');
     description.innerHTML = bookmark.Description;
 
-    //TODO: add bookmark
-    let bookMarkButton = document.createElement('button');
-    bookMarkButton.classList.add('add-bookmark-button');
-    //bookMarkButton.classList.();
+    //add bookmark button
+    let addBookmarkButton = document.createElement('button');
+    addBookmarkButton.classList.add('add-bookmark-button');
+    addBookmarkButton.setAttribute('id', "add-bookmark-" + counter);
+    addBookmarkButton.innerHTML = "Add Bookmark";
     
-    bookMarkButton.innerHTML = "Add Bookmark";
     // id="add-bookmark-2"
 
     //append
@@ -124,7 +128,7 @@ function createBookmarkElement(bookmark){
     bookmarkDiv.appendChild(bookmarkTitleDiv);
     bookmarkDiv.appendChild(bookmarkUrlDiv);
     bookmarkDiv.appendChild(boookmarkDescriptionDiv);
-    bookmarkDiv.appendChild(bookMarkButton);
+    bookmarkDiv.appendChild(addBookmarkButton);
 
     return bookmarkDiv;
 

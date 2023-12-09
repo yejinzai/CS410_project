@@ -35,18 +35,23 @@ console.log('firebases init success');
 const firestore = firebase.firestore();
 let userID = 'localtest';
 
-let docRef = getDocRef();
+/*let docRef = firestore.collection('users').doc(userID).collection('bookmarks');
 
 async function getDocRef(){
-    let collection = await firestore.collection('users').doc(userID).collection('bookmarks');
+    //let collection = await firestore.collection('users').doc(userID).collection('bookmarks');
+    let collection = await docRef.add({
+        name: 'Tokyo',
+        country: 'Japan'
+    });
     console.log('collection: ', collection);
     return collection;
-}
+}*/
 
-console.log(docRef);
+
+
+//function - add bookmark
 
 /*
-//function - add bookmark
 function addBookmarkToFirestore(article) {
     return new Promise((resolve, reject) => {
         console.log("here");
@@ -58,56 +63,30 @@ function addBookmarkToFirestore(article) {
         });
     });
 }
-
-let dummyList = [
-    {
-        Title: "dummy1 title",
-        Url: "dummy1 url",
-        Description: "dummy1 description"
-    },
-    {
-        Title: "dummy2 title",
-        Url: "dummy2 url",
-        Description: "dummy2 description"
-    },
-    {
-        Title: "dummy3 title",
-        Url: "dummy3 url",
-        Description: "dummy3 description"
-    },
-    {
-        Title: "dummy4 title",
-        Url: "dummy4 url",
-        Description: "dummy4 description"
-    },
-    {
-        Title: "dummy5 title",
-        Url: "dummy5 url",
-        Description: "dummy5 description"
-    }
-]
 */
-let addBookmarkButtons = document.querySelectorAll('.add-bookmark-button');
-
-
 
 //button event listeners
 function addBookmarkButtonEventListener(){
-    console.log("here :D ");
+    addBookmarkButtons = document.querySelectorAll('.add-bookmark-button');
+
     addBookmarkButtons.forEach((addBookmarkButton)=>{
         addBookmarkButton.addEventListener("click", ()=>{
+            
             let buttonId = addBookmarkButton.id;
-            let articleIndex = buttonId.charAt(buttonId.length-1)-1;
+            let articleIndex = buttonId.charAt(buttonId.length-1);
             let bookmark = articleList[articleIndex];
-            console.log('buttonId', buttonId);
-            console.log('articleIndex', articleIndex);
-            console.log('bookmark', bookmark);
-    /*
-            addBookmarkToFirestore(bookmark).then(()=>{ 
+
+            let addBookmarkAction = addBookmarkToFirestore(bookmark).then(()=>{
                 let successMessage = document.createElement('p');
                 successMessage.innerHTML = "Added to Bookmarks";
                 addBookmarkButton.after(successMessage);
-            });*/
+            });
+
         });
     });
+}
+
+async function addBookmarkToFirestore(article){
+    let item = await firestore.collection('users').doc(userID).collection('bookmarks').add(article);
+    return item;
 }
