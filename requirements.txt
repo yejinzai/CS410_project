@@ -8,3 +8,4 @@ flask_cors
 bs4
 requests
 urllib3
+firebase
