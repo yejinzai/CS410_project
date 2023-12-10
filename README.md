@@ -1,54 +1,35 @@
-How To Use StudyFriend Chrome browser extension
+# StudyFriend Chrome Browser Extension
 
-1. Download this Github repository locally to your computer. 
+## How To Use
 
-    pip install requirements.txt
-    Pip install -r requirements.txt
+### 1. Download and Setup Steps
 
-    for issues with pip install invovling long paths: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#enable-long-paths-in-windows-10-version-1607-and-later
+- Install Google Chrome browser
+- Clone the repository:
+    git clone https://github.com/yejinzai/CS410_project
 
-2. Install the extension in your Google Chrome:
-    In a Chrome browser, go to chrome://extensions/
-    enable Developer Mode using the toggle switch
-    click on "Load Unpacked" and select the directory where you downloaded this Github repo
-
-3. Open a terminal in the Github folder and run:
-    flask run 
-
-    or you may be able to use:
-    python app.py
-
-4. Open index.html in the Chrome browser
-
-5. enter a search term
---------
+- Install Python
+- Open a terminal window in the project folder and execute:
+    pip install -r requirements.txt
+    npm install firebase
 
 
-Bookmarks Section
+### 2. Run Servers
 
-1. npm install firebase
-2. to test out the bookmark feature, open terminal and run: live-server . 
-3. npm install -g live-server' for live-server
----------
+Open a terminal window in the project folder and execute:
 
+- flask run
 
 
-dummy.txt has text data
-    - Payel can use to verify if scaper output matches with search input
-    - Sharon and Christine can use to development front-end tasks in parallel
----------
+### 3. (Optional) Install the Extension in Google Chrome
 
+- In a Chrome browser, go to `chrome://extensions/`
+- Enable Developer Mode using the toggle switch
+- Click on "Load Unpacked" and select the directory where you downloaded this GitHub repository
+- Access the extension from the extension bar in Chrome
 
+### 4. Use the Web Interface
 
-Notes about search to test on terminal and the api
-1. pip install requirements.txt
-1. test on terminal
-   - python main.py "search query" k
-   - e.g. python main.py "climate change" 5
-3. test the api
-   - python app.py on a terminal
-   - in another terminal, curl -X POST -H "Content-Type: application/json" -d '{"query": "search query", "k": k}' http://localhost:5000/api/search
-   - e.g. curl -X POST -H "Content-Type: application/json" -d '{"query": "climate change", "k": 5}' http://localhost:5000/api/search
-----------
-
+- From the project folder, open `index.html` in the Chrome browser
+- Enter a search term
 

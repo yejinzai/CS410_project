@@ -1,3 +1,33 @@
+
+// From save_bookmark.js  Firebase configration:
+
+// Import the functions you need from the SDKs you need
+console.log('firebase init from firebase_save_video.js');
+
+// Import the functions you need from the SDKs you need
+// import from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+// import "https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js";
+
+
+
+// // Modified function -- to my actural data to be bookmarked
+// function addBookmarkToFirestore(article) {
+//     return new Promise((resolve, reject) => {
+//         const bookmarkData = {
+//             Title: article.querySelector('.bookmark-title').innerHTML,
+//             Url: article.querySelector('.bookmark-url').href,
+//             Description: article.querySelector('.bookmark-description').innerHTML,
+//         };
+
+//         docRef.add(bookmarkData).then(() => {
+//             resolve(true);
+//             console.log('successfully added to Firestore');
+//         }).catch((error) => {
+//             console.log('error message: ', error.message);
+//         });
+//     });
+// }
+
 function performSearch() {
     // Get the search term from the input field
     var searchTerm = document.getElementById("searchInput").value;
@@ -46,8 +76,8 @@ function performSearch() {
     })
         .then(response => response.json())
         .then(data => {
-            const parsedData = JSON.parse(data);
-
+            const parsedData = data;
+            articleList = parsedData;
             //Christine's debug
             //createBookmarkElements(dummy).then((response)=>{
 
@@ -66,18 +96,21 @@ function performSearch() {
         });
 }
 
-function createBookmarkElements(bookmarks){
-    bookmarks.forEach((bookmark)=>{
-        let bookmarkElement = createBookmarkElement(bookmark);
+function createBookmarkElements(bookmarks) {
+    let counter = 0;
+    bookmarks.forEach((bookmark) => {
+        let bookmarkElement = createBookmarkElement(bookmark, counter);
         var resultsContainer = document.getElementById('results');
         resultsContainer.appendChild(bookmarkElement);
+        counter++;
     });
+    addBookmarkButtonEventListener();
     return new Promise((resolve, reject) => {
         resolve(true);
     });
 }
 
-function createBookmarkElement(bookmark){
+function createBookmarkElement(bookmark, counter){
     //div
     let bookmarkDiv = document.createElement('div');
     bookmarkDiv.classList.add('bookmark-div');
@@ -105,8 +138,13 @@ function createBookmarkElement(bookmark){
     description.classList.add('bookmark-url');
     description.innerHTML = bookmark.Description;
 
-    //TODO: add bookmark
-    // <button className="add-bookmark-button" id="add-bookmark-2">Add Bookmark</button>
+    //add bookmark button
+    let addBookmarkButton = document.createElement('button');
+    addBookmarkButton.classList.add('add-bookmark-button');
+    addBookmarkButton.setAttribute('id', "add-bookmark-" + counter);
+    addBookmarkButton.innerHTML = "Add Bookmark";
+    
+    // id="add-bookmark-2"
 
     //append
     bookmarkTitleDiv.appendChild(title);
@@ -116,6 +154,7 @@ function createBookmarkElement(bookmark){
     bookmarkDiv.appendChild(bookmarkTitleDiv);
     bookmarkDiv.appendChild(bookmarkUrlDiv);
     bookmarkDiv.appendChild(boookmarkDescriptionDiv);
+    bookmarkDiv.appendChild(addBookmarkButton);
 
     return bookmarkDiv;
 

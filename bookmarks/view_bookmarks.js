@@ -35,51 +35,44 @@ console.log('firebases init success');
 //db access
 const firestore = firebase.firestore();
 let userID = 'localtest';
-let docRef = await firestore.collection('users').doc(userID).collection('bookmarks');
 
-////////
 let bookmarkSection = document.querySelector('#bookmarks');
+console.log('section', bookmarkSection);
+let bookmarks = [];
 
-//get bookmarks
-function getBookmarksFromFirestore() {
-    return new Promise((resolve, reject) => {
-        docRef.get().then((results) => {
-            let bookmarks = [];
-            results.forEach((doc) => {
-                bookmarks.push({
-                    Title: doc.data().Title,
-                    Url: doc.data().Url,
-                    Description: doc.data().Description
-                });
-            });
-            resolve(bookmarks);
-        });
-    });
+
+async function getBookmarksFromFirestore() {
+    let collection = await firestore.collection('users').doc(userID).collection('bookmarks').get();
+    return collection;
 }
 
-let bookmarks = await getBookmarksFromFirestore();
 
-function createBookmarkElements(bookmarks){
-    bookmarks.forEach((bookmark)=>{
+
+
+
+function createBookmarkElements(bookmarks) {
+    bookmarks.forEach((bookmark) => {
         let bookmarkElement = createBookmarkElement(bookmark);
         bookmarkSection.appendChild(bookmarkElement);
     });
+    
     return new Promise((resolve, reject) => {
         resolve(true);
     });
 }
 
-function createBookmarkElement(bookmark){
+function createBookmarkElement(bookmark) {
+    console.log('creattebookmark', bookmark);
     //div
     let bookmarkDiv = document.createElement('div');
     bookmarkDiv.classList.add('bookmark-div');
     let bookmarkTitleDiv = document.createElement('div');
-    bookmarkTitleDiv.classList.add('bookmark-title-div');   
+    bookmarkTitleDiv.classList.add('bookmark-title-div');
     let bookmarkUrlDiv = document.createElement('div');
     bookmarkUrlDiv.classList.add('bookmark-url-div');
     let boookmarkDescriptionDiv = document.createElement('div');
-    boookmarkDescriptionDiv.classList.add('bookmark-description-div'); 
-    
+    boookmarkDescriptionDiv.classList.add('bookmark-description-div');
+
     //title
     let title = document.createElement('p');
     title.classList.add('bookmark-title');
@@ -105,15 +98,30 @@ function createBookmarkElement(bookmark){
     bookmarkDiv.appendChild(bookmarkTitleDiv);
     bookmarkDiv.appendChild(bookmarkUrlDiv);
     bookmarkDiv.appendChild(boookmarkDescriptionDiv);
-    
+
     return bookmarkDiv;
 
 }
 
-createBookmarkElements(bookmarks).then((response)=>{
-    if (response) {
-        console.log('bookmarks displayed successfully');
-        document.querySelector("#loader").classList.toggle('hidden');
-    }
-});
 
+
+//get bookmarks
+let bookmarksData = getBookmarksFromFirestore().then((results) => {
+    results.forEach((doc) => {
+        bookmarks.push({
+            Title: doc.data().Title,
+            Url: doc.data().Url,
+            Description: doc.data().Description
+        })
+    });
+    return bookmarks;
+}).then((results) => {
+    createBookmarkElements(results)
+    .then((response)=>{
+        if(response){
+            console.log('bookmarks displayed successfully');
+            document.querySelector("#loader").classList.toggle('hidden');
+        }
+    })
+
+});

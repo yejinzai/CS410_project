@@ -34,9 +34,11 @@ console.log('firebases init success');
 //db access
 const firestore = firebase.firestore();
 let userID = 'localtest';
-let docRef = await firestore.collection('users').doc(userID).collection('bookmarks');
+
 
 //function - add bookmark
+
+/*
 function addBookmarkToFirestore(article) {
     return new Promise((resolve, reject) => {
         console.log("here");
@@ -48,48 +50,30 @@ function addBookmarkToFirestore(article) {
         });
     });
 }
-
-let dummyList = [
-    {
-        Title: "dummy1 title",
-        Url: "dummy1 url",
-        Description: "dummy1 description"
-    },
-    {
-        Title: "dummy2 title",
-        Url: "dummy2 url",
-        Description: "dummy2 description"
-    },
-    {
-        Title: "dummy3 title",
-        Url: "dummy3 url",
-        Description: "dummy3 description"
-    },
-    {
-        Title: "dummy4 title",
-        Url: "dummy4 url",
-        Description: "dummy4 description"
-    },
-    {
-        Title: "dummy5 title",
-        Url: "dummy5 url",
-        Description: "dummy5 description"
-    }
-]
-
-let addBookmarkButtons = document.querySelectorAll('.add-bookmark-button');
-let articleList = dummyList; // TODO - change the value to the actual list
+*/
 
 //button event listeners
-addBookmarkButtons.forEach((addBookmarkButton)=>{
-    addBookmarkButton.addEventListener("click", ()=>{
-        let buttonId = addBookmarkButton.id;
-        let articleIndex = buttonId.charAt(buttonId.length-1)-1;
-        let bookmark = articleList[articleIndex];
-        addBookmarkToFirestore(bookmark).then(()=>{ 
-            let successMessage = document.createElement('p');
-            successMessage.innerHTML = "Added to Bookmarks";
-            addBookmarkButton.after(successMessage);
+function addBookmarkButtonEventListener(){
+    addBookmarkButtons = document.querySelectorAll('.add-bookmark-button');
+
+    addBookmarkButtons.forEach((addBookmarkButton)=>{
+        addBookmarkButton.addEventListener("click", ()=>{
+            
+            let buttonId = addBookmarkButton.id;
+            let articleIndex = buttonId.charAt(buttonId.length-1);
+            let bookmark = articleList[articleIndex];
+
+            let addBookmarkAction = addBookmarkToFirestore(bookmark).then(()=>{
+                let successMessage = document.createElement('p');
+                successMessage.innerHTML = "Added to Bookmarks";
+                addBookmarkButton.after(successMessage);
+            });
+
         });
     });
-});
+}
+
+async function addBookmarkToFirestore(article){
+    let item = await firestore.collection('users').doc(userID).collection('bookmarks').add(article);
+    return item;
+}
