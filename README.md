@@ -33,3 +33,9 @@ Open a terminal window in the project folder and execute:
 - From the project folder, open `index.html` in the Chrome browser
 - Enter a search term
 
+----
+
+## Relevant Documentation for Reviewers
+
+1. [Final Documentation.pdf](Final%20Documentation.pdf)
+2. [Demonstration](Study%20Friend%20Demonstration.mp4)
