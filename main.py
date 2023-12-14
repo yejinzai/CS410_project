@@ -2,7 +2,9 @@ import argparse
 from search import get_knn
 from scrape import do_scrape
 
-# Press the green button in the gutter to run the script.
+# This code is for offline testing and can be executed on the terminal
+# to see results of scraper and search
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Test')
 	parser.add_argument('query', type=str, help='query')
